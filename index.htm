@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priyanshu Raj Anand - Software & DevOps Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3B82F6;
+            /* Blue-500 */
+            --accent-color: #60A5FA;
+            /* Blue-400 */
+            --bg-dark: #0F172A;
+            /* Slate-900 */
+            --text-light: #F8FAFC;
+            /* Slate-50 */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            scroll-behavior: smooth;
+        }
+
+        .section-title {
+            color: var(--text-light);
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+
+        .card {
+            background: #1E293B;
+            /* Slate-800 */
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.4);
+            /* Blue shadow on hover */
+        }
+
+        .hero-background {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #0c2049 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle Noise Overlay for high-end feel */
+        .hero-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(45deg,
+                    rgba(255, 255, 255, 0.05),
+                    rgba(255, 255, 255, 0.05) 2px,
+                    transparent 2px,
+                    transparent 4px);
+            mix-blend-mode: overlay;
+            opacity: 0.5;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Custom background for the About section to improve visual appeal */
+        .about-background {
+            /* Radial gradient with a slight dark blue tint at the top, fading to the standard dark background */
+            background: radial-gradient(circle at 50% 0%, #172554 0%, var(--bg-dark) 60%);
+        }
+
+        /* Typewriter Effect */
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: var(--accent-color);
+            }
+        }
+
+        #typewriter-text-wrapper {
+            display: inline-block;
+        }
+
+        #typewriter-text {
+            border-right: 0.15em solid var(--accent-color);
+            /* The caret */
+            animation:
+                blink-caret 0.75s step-end infinite;
+        }
+
+        .cta-button {
+            background-color: var(--primary-color);
+            transition: background-color 0.3s, transform 0.1s;
+        }
+
+        .cta-button:hover {
+            background-color: #2563EB;
+            /* Blue-600 */
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, var(--accent-color) 0%, var(--text-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-card {
+            background: #1e293b;
+            /* Slate-800 */
+            border-left: 3px solid #60A5FA;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s;
+        }
+
+        .about-card:hover {
+            background-color: #111827;
+            /* Darker hover state */
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-sm shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 text-xl font-bold gradient-text flex items-center space-x-2">
+                        <!-- Custom PRA Logo SVG -->
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 16L12 9L19 16" stroke="#60A5FA" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M12 12V3" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M3 21H21" stroke="#F8FAFC" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <span>Priyanshu Raj Anand</span>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#services"
+                            class="text-slate-300 hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition duration-150">Expertise</a>
+                        <a href="#projects"
+                            class="text-slate-300 hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition duration-150">Projects</a>
+                        <a href="#about"
+                            class="text-slate-300 hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition duration-150">About</a>
+                        <a href="#contact"
+                            class="text-white cta-button px-4 py-2 rounded-lg text-sm font-semibold transition duration-150 shadow-lg hover:shadow-xl">Get
+                            in Touch</a>
+                    </div>
+                </div>
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-slate-300 hover:text-blue-400 focus:outline-none"
+                    onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                    <!-- Icon: Menu -->
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#services"
+                    class="text-slate-300 hover:bg-slate-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Expertise</a>
+                <a href="#projects"
+                    class="text-slate-300 hover:bg-slate-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
+                <a href="#about"
+                    class="text-slate-300 hover:bg-slate-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#contact"
+                    class="text-white cta-button block px-3 py-2 rounded-md text-base font-medium mt-2">Get in Touch</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero-background pt-16 pb-24 lg:pt-32 lg:pb-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+            <!-- Updated layout for image and text -->
+            <div class="flex flex-col lg:flex-row items-center lg:justify-between lg:space-x-12">
+
+                <!-- Profile Image (Left on Desktop, Top on Mobile) -->
+                <div class="lg:w-1/3 mb-10 lg:mb-0 flex justify-center">
+                    <div
+                        class="w-56 h-56 rounded-full overflow-hidden border-4 border-blue-500 shadow-2xl shadow-blue-800/50 transform hover:scale-[1.05] transition-transform duration-300">
+                        <!-- Custom Base64 SVG Image placeholder -->
+                        <img src="me.png"
+                            alt="Priyanshu Raj Anand Profile Picture" class="w-full h-full object-cover"
+                            onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjI0IiBoZWlnaHQ9IjIyNCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiMwRjE3MkEiLz48L3N2Zz4=';" />
+                    </div>
+                </div>
+
+                <!-- Text Content (Right on Desktop, Bottom on Mobile) -->
+                <div class="lg:w-2/3 text-center lg:text-left">
+                    <!-- MIN-HEIGHT RETAINED FOR CLS PREVENTION -->
+                    <h1
+                        class="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight mb-4 min-h-24 pt-4">
+                        Hello, I'm <br>
+                        <!-- Typewriter Effect ONLY applied to the role/title -->
+                        <span id="typewriter-text-wrapper mb-2" class="gradient-text">
+                            <!-- Typewriter Target -->
+                            <span id="typewriter-text"></span>
+                        </span>
+                    </h1>
+                    <p class="mt-3 text-xl sm:text-2xl text-slate-300 max-w-3xl mx-auto">
+                        I build resilient automation, zero-downtime CI/CD pipelines, and high-performance web
+                        applications.
+                        <br class="hidden sm:inline"><br> Let's optimize your operations and scale your success.
+                    </p>
+                    <div
+                        class="mt-10 flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-6">
+                        <a href="#projects"
+                            class="cta-button text-white font-bold py-3 px-8 rounded-xl text-lg shadow-2xl shadow-blue-800/50 transition-all transform hover:scale-[1.02] duration-300">
+                            View My Projects
+                        </a>
+                        <a href="#contact"
+                            class="bg-transparent border-2 border-blue-400 text-blue-300 font-semibold py-3 px-8 rounded-xl text-lg transition-all transform hover:bg-blue-900/30 duration-300">
+                            Start a Discussion
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Services/Expertise Section -->
+    <section id="services" class="py-24 lg:py-32 bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title text-center mb-16">
+                Core Expertise & Services
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <!-- Service 1: Software Development (Full-Stack) -->
+                <div class="card p-8 rounded-xl shadow-2xl border-t-4 border-blue-500">
+                    <div class="text-blue-400 mb-4">
+                        <!-- Icon: Brackets {} -->
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-white">System Automation & Scripting</h3>
+                    <p class="text-slate-400">
+                        I write robust scripts (Bash, Python, PowerShell, etc.) to automate system administration,
+                        infrastructure management (Terraform/Ansible), reporting, and complex data migration tasks.
+                        Eliminate manual toil and ensure consistency.
+                    </p>
+                </div>
+
+                <!-- Service 2: CI/CD & DevOps -->
+                <div class="card p-8 rounded-xl shadow-2xl border-t-4 border-blue-500">
+                    <div class="text-blue-400 mb-4">
+                        <!-- Icon: Pipeline/Delivery -->
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 7v10h16V7H4zm16 10l-4-4m-4 4l4-4m-4-4l4 4m-4 4l4-4m-4 4l4-4m-4-4l4 4m-4 4l4-4M8 10h.01M16 10h.01M8 14h.01M16 14h.01M12 10h.01M12 14h.01">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-white">CI/CD & Container Deployment</h3>
+                    <p class="text-slate-400">
+                        Specializing in modernizing application delivery. I design, implement, and maintain CI/CD
+                        pipelines (Azure DevOps, GitHub Actions, Jenkins), manage Dockerization, and deploy/scale
+                        applications on Cloud Based Kubernetes solutions (AKS, EKS, ECS).
+                    </p>
+                </div>
+
+                <!-- Service 3: Cloud & Infrastructure -->
+                <div class="card p-8 rounded-xl shadow-2xl border-t-4 border-blue-500">
+                    <div class="text-blue-400 mb-4">
+                        <!-- Icon: Cloud/Server -->
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1M9 11h1M9 15h1m-5 4h5m-5 0v-4m0-4v-4">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-white">Full-Stack Web Solutions (MERN/PHP-MySql)</h3>
+                    <p class="text-slate-400">
+                        From dynamic front-end interfaces to robust back-end APIs, I deliver complete,
+                        performant, and secure websites and web applications tailored to your business needs.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 lg:py-32 bg-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title text-center mb-16">
+                Projects
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+
+                <div class="card p-6 rounded-xl shadow-xl hover:shadow-2xl border border-slate-700 overflow-hidden">
+                    <div class="mb-6 h-48 bg-slate-700 flex items-center justify-center rounded-lg overflow-hidden">
+                        <img src="ci-cd.png"
+                            alt="Go Microservices Platform Placeholder" class="object-cover w-full h-full"
+                            onerror="this.onerror=null; this.src='https://placehold.co/800x300/1E293B/A7CCFC?text=Go+Microservices+Platform+Fallback';">
+                    </div>
+                    <h3 class="text-3xl font-extrabold gradient-text mb-2">Flask App CI/CD Pipeline</h3>
+                    <p class="text-slate-300 mb-4">
+                        Automated Python Flask application deployment to Azure AKS using an Azure DevOps CI/CD pipeline,
+                        streamlining delivery to a managed Kubernetes solution.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-900/50 text-blue-300 text-xs font-medium px-2.5 py-0.5 rounded-full">Azure
+                            DevOps</span>
+                        <span
+                            class="bg-blue-900/50 text-blue-300 text-xs font-medium px-2.5 py-0.5 rounded-full">Kubernetes</span>
+                        <span class="bg-blue-900/50 text-blue-300 text-xs font-medium px-2.5 py-0.5 rounded-full">Python
+                            - Flask</span>
+                        <span
+                            class="bg-blue-900/50 text-blue-300 text-xs font-medium px-2.5 py-0.5 rounded-full">Docker</span>
+                        <span
+                            class="bg-blue-900/50 text-blue-300 text-xs font-medium px-2.5 py-0.5 rounded-full">YAML</span>
+                    </div>
+                </div>
+
+                <div class="card p-6 rounded-xl shadow-xl hover:shadow-2xl border border-slate-700 overflow-hidden">
+                    <div class="mb-6 h-48 bg-slate-700 flex items-center justify-center rounded-lg overflow-hidden">
+                        <img src="terraform-ec2-instance.png" alt="Cloud Infrastructure Setup Placeholder"
+                            class="object-cover w-full h-full"
+                            onerror="this.onerror=null; this.src='https://placehold.co/800x300/1E293B/A7CCFC?text=Terraform+AWS+VPC+Setup+Fallback';">
+                    </div>
+                    <h3 class="text-3xl font-extrabold gradient-text mb-2">Automated Multi-Account EC2 Provisioning</h3>
+                    <p class="text-slate-300 mb-4">
+                        Developed secure, reusable Terraform modules to automate the provisioning and configuration of
+                        AWS Linux EC2 instances across multiple accounts and regions, significantly reducing
+                        infrastructure deployment and hardening time.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span
+                            class="bg-blue-900/50 text-blue-300 text-xs font-medium px-2.5 py-0.5 rounded-full">Terraform</span>
+                        <span
+                            class="bg-blue-900/50 text-blue-300 text-xs font-medium px-2.5 py-0.5 rounded-full">AWS</span>
+                        <span class="bg-blue-900/50 text-blue-300 text-xs font-medium px-2.5 py-0.5 rounded-full">Shell
+                            Scripting</span>
+                        <span
+                            class="bg-blue-900/50 text-blue-300 text-xs font-medium px-2.5 py-0.5 rounded-full">Python</span>
+                    </div>
+                </div>
+
+
+                <div class="card p-6 rounded-xl shadow-xl hover:shadow-2xl border border-slate-700 overflow-hidden">
+                    <div class="mb-6 h-48 bg-slate-700 flex items-center justify-center rounded-lg overflow-hidden">
+                        <img src="ec2-status-check.png" alt="Automation Scripting Placeholder"
+                            class="object-cover w-full h-full"
+                            onerror="this.onerror=null; this.src='https://placehold.co/800x300/1E293B/A7CCFC?text=Python+Automation+Script+Fallback';">
+                    </div>
+                    <h3 class="text-3xl font-extrabold gradient-text mb-2">EC2 Status Check Automation</h3>
+                    <p class="text-slate-300 mb-4">
+                        Designed and implemented a serverless workflow that automatically detects and responds to EC2
+                        status check failures. This involved creating a Python Lambda function to monitor status,
+                        dispatching real-time alerts via SNS, and ensuring immediate incident logging in ServiceNow to
+                        streamline resolution. </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span
+                            class="bg-blue-900/50 text-blue-300 text-xs font-medium px-2.5 py-0.5 rounded-full">Python</span>
+                        <span
+                            class="bg-blue-900/50 text-blue-300 text-xs font-medium px-2.5 py-0.5 rounded-full">Boto3</span>
+                        <span class="bg-blue-900/50 text-blue-300 text-xs font-medium px-2.5 py-0.5 rounded-full">AWS
+                            SNS</span>
+                        <span class="bg-blue-900/50 text-blue-300 text-xs font-medium px-2.5 py-0.5 rounded-full">AWS
+                            Lambda</span>
+                        <span class="bg-blue-900/50 text-blue-300 text-xs font-medium px-2.5 py-0.5 rounded-full">Node
+                            Js</span>
+                    </div>
+                </div>
+
+                <div class="card p-6 rounded-xl shadow-xl hover:shadow-2xl border border-slate-700 overflow-hidden">
+                    <div class="mb-6 h-48 bg-slate-700 flex items-center justify-center rounded-lg overflow-hidden">
+
+                        <img src="ec2-cost-optimization.png" alt="React Data Visualization Dashboard Placeholder"
+                            class="object-cover w-full h-full"
+                            onerror="this.onerror=null; this.src='https://placehold.co/800x300/1E293B/A7CCFC?text=React+Data+Dashboard+UI+Fallback';">
+                    </div>
+                    <h3 class="text-3xl font-extrabold gradient-text mb-2">Cloud Cost Saving Automation</h3>
+                    <p class="text-slate-300 mb-4">
+                        Implemented an automated EC2 power scheduling solution to automatically power instances on/off
+                        during non-business hours, significantly reducing cloud infrastructure costs.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span
+                            class="bg-blue-900/50 text-blue-300 text-xs font-medium px-2.5 py-0.5 rounded-full">PowerShell</span>
+                        <span
+                            class="bg-blue-900/50 text-blue-300 text-xs font-medium px-2.5 py-0.5 rounded-full">Python</span>
+                        <span
+                            class="bg-blue-900/50 text-blue-300 text-xs font-medium px-2.5 py-0.5 rounded-full">HTML</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section - VISUALLY ENHANCED with Card List -->
+    <section id="about" class="py-24 lg:py-32 about-background">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title text-center mb-16">
+                My Core Values & Focus
+            </h2>
+
+            <div class="lg:flex lg:space-x-12">
+
+                <!-- Main Core Focus Cards (3/5 width) -->
+                <div class="lg:w-3/5 grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                    <!-- Card 1: Dual Focus - Added min-h-48 -->
+                    <div class="about-card p-6 rounded-xl min-h-48 flex flex-col justify-start">
+                        <div class="text-blue-400 mb-2">
+                            <!-- Icon: Code Fork -->
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 4v16m8-8H4"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-xl font-bold mb-1 text-white">Dual Expertise: Full-Stack & DevOps</h4>
+                        <p class="text-slate-400 text-sm">
+                            I bridge the gap between development and operations, ensuring solutions are not just
+                            feature-complete but also robust, scalable, and easy to deploy.
+                        </p>
+                    </div>
+
+                    <!-- Card 2: Automation First - Added min-h-48 -->
+                    <div class="about-card p-6 rounded-xl min-h-48 flex flex-col justify-start">
+                        <div class="text-blue-400 mb-2">
+                            <!-- Icon: Cog Wheel -->
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37a1.724 1.724 0 002.572-1.065z">
+                                </path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-xl font-bold mb-1 text-white">Automation First Mindset</h4>
+                        <p class="text-slate-400 text-sm">
+                            Committed to eliminating friction in the development lifecycle, focusing on high velocity,
+                            repeatability, and reducing manual operational toil.
+                        </p>
+                    </div>
+
+                    <!-- Card 3: Cloud-Native Focus (Full Width) -->
+                    <div class="about-card p-6 rounded-xl md:col-span-2">
+                        <div class="text-blue-400 mb-2">
+                            <!-- Icon: Cloud with lightning -->
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-xl font-bold mb-1 text-white">Cloud-Native Adoption & Strategy</h4>
+                        <p class="text-slate-400 text-sm">
+                            Passionate about leveraging modern technologies like Kubernetes, Serverless, and
+                            event-driven architectures to build resilient and cost-efficient systems on AWS/Azure/GCP.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- Highlighted Philosophy/Quote Box (2/5 width) - Kept the look you liked -->
+                <div class="lg:w-2/5 mt-10 lg:mt-0">
+                    <div class="card p-8 rounded-xl border-l-4 border-blue-500 shadow-2xl bg-slate-800/70">
+                        <div class="text-blue-400 mb-4">
+                            <!-- Icon: Lightbulb/Idea -->
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9.663 17h4.673m-4.673 0V7a4 4 0 014-4h.335a4 4 0 014 4v10m-4.673 0h4.673m-4.673 0h2.336M12 21v-3">
+                                </path>
+                            </svg>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3 text-white">My Professional Philosophy</h4>
+                        <blockquote class="italic text-slate-300 border-l-2 border-slate-500 pl-4">
+                            "Automation is the key to velocity. If a task is done more than once, it must be automated."
+                        </blockquote>
+                        <p class="text-sm text-blue-300 mt-3 font-medium">— Focus on Automation, Cloud Adoption, CI/CD & Scalability</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 lg:py-32 bg-slate-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title text-center mb-16">
+                Let's Connect
+            </h2>
+
+            <div class="card p-8 md:p-12 rounded-xl shadow-2xl border border-blue-500/30">
+                <form id="project-form" action="#" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-slate-300 mb-2">Your Name</label>
+                        <input type="text" id="name" name="name" required
+                            class="w-full px-4 py-3 rounded-lg bg-slate-700 border border-slate-600 text-white focus:ring-blue-500 focus:border-blue-500 placeholder-slate-400">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-slate-300 mb-2">Your Email</label>
+                        <input type="email" id="email" name="email" required
+                            class="w-full px-4 py-3 rounded-lg bg-slate-700 border border-slate-600 text-white focus:ring-blue-500 focus:border-blue-500 placeholder-slate-400">
+                    </div>
+                    <div>
+                        <label for="service_type" class="block text-sm font-medium text-slate-300 mb-2">Project
+                            Type</label>
+                        <select id="service_type" name="service_type"
+                            class="w-full px-4 py-3 rounded-lg bg-slate-700 border border-slate-600 text-white focus:ring-blue-500 focus:border-blue-500">
+                            <option value="software">Web Services</option>
+                            <option value="devops">DevOps & CI/CD</option>
+                            <option value="iac">Automation & Cloud Deployment</option>
+                            <option value="consulting">General Consultation</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-slate-300 mb-2">Tell me about your
+                            project or idea</label>
+                        <textarea id="message" name="message" rows="4" required
+                            class="w-full px-4 py-3 rounded-lg bg-slate-700 border border-slate-600 text-white focus:ring-blue-500 focus:border-blue-500 placeholder-slate-400"></textarea>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="submit" id="submit-button"
+                            class="w-full cta-button text-white font-bold py-3 rounded-xl text-lg shadow-xl shadow-blue-800/40 transition-all transform hover:scale-[1.01] duration-300">
+                            Send Message
+                        </button>
+                    </div>
+                    <p class="text-center text-sm text-slate-400 mt-4">I will personally respond to your inquiry within
+                        one business day.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-700 py-8 relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-slate-400 text-sm mb-6">&copy; 2025 Priyanshu Raj Anand. All rights reserved.</p>
+            <div class="flex justify-center space-x-8">
+                <!-- LinkedIn Icon -->
+                <a href="https://www.linkedin.com/in/priyanshu-raj-anand-28a12225a/" class="text-slate-500 social-icon">
+                    <span class="sr-only">LinkedIn</span>
+                    <svg class="h-8 w-8" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                    </svg>
+                </a>
+                <!-- GitHub Icon -->
+                <a href="https://github.com/codePriyanshuRajAnand" class="text-slate-500 social-icon">
+                    <span class="sr-only">GitHub</span>
+                    <svg class="h-8 w-8" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                </a>
+                <!-- Email Icon -->
+                <a href="mailto:priyanshurajanand2@example.com" class="text-slate-500 social-icon">
+                    <span class="sr-only">Email</span>
+                    <svg class="h-8 w-8" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Smooth Scrolling and Typewriter Effect -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Close mobile menu after click
+                if (!document.getElementById('mobile-menu').classList.contains('hidden')) {
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        /**
+         * Implements a typewriter effect by cycling through a list of phrases (without deletion 
+         * for each character, but clearing the entire text between phrases).
+         */
+        function typewriterEffect(elementId, phrases, delay = 100) {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+
+            let phraseIndex = 0;
+            let charIndex = 0;
+
+            function type() {
+                const currentPhrase = phrases[phraseIndex];
+
+                // Typing logic: only increases length
+                element.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+
+                if (charIndex <= currentPhrase.length) {
+                    // Continue typing the current phrase
+                    setTimeout(type, delay);
+                } else {
+                    // Phrase is complete. Pause, clear the text, and jump to the next phrase.
+
+                    // Reset character index for the next phrase
+                    charIndex = 0;
+
+                    // Move to the next phrase in the list
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+
+                    // Pause for 1.5 seconds, then clear text and start typing the next phrase quickly.
+                    setTimeout(() => {
+                        element.textContent = ""; // Instantly clear the text
+                        setTimeout(type, 50); // Start typing the new phrase almost immediately after clearing
+                    }, 1500);
+                }
+            }
+
+            // Start the effect
+            type();
+        }
+
+        // Initialization on window load
+        window.addEventListener('load', () => {
+            // Phrases now only contain the descriptive roles/services
+            const professionalPhrases = [
+                "Priyanshu Raj Anand"
+            ];
+
+            // Apply the typewriter effect only to the span in the hero section
+            typewriterEffect('typewriter-text', professionalPhrases);
+        });
+
+        // Simple form submission handler (prevent actual submission, used for the 'Send Inquiry' button)
+        document.getElementById('project-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const form = e.target;
+            const submitButton = document.getElementById('submit-button');
+
+            // Temporarily change button text and style
+            submitButton.textContent = "Message Sent! Thank You.";
+            submitButton.classList.remove('cta-button');
+            submitButton.classList.add('bg-green-600', 'hover:bg-green-700');
+
+            // Reset after a few seconds
+            setTimeout(() => {
+                form.reset();
+                submitButton.textContent = "Send Message";
+                submitButton.classList.remove('bg-green-600', 'hover:bg-green-700');
+                submitButton.classList.add('cta-button');
+            }, 3000);
+        });
+    </script>
+</body>
+
+</html>
